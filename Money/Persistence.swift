@@ -4,9 +4,42 @@
 //
 //  Created by Vladimir Fibe on 04.01.2022.
 //
-
+import SwiftUI
 import CoreData
 
+extension CardTransaction {
+  var cardname: String {
+    name ?? ""
+  }
+  var cardamount: String {
+    String(format: "$%.2f", amount)
+  }
+}
+extension Card {
+  var cardname: String {
+    name ?? ""
+  }
+  var cardnumber: String {
+    number ?? ""
+  }
+  var cardtype: String {
+    type ?? ""
+  }
+  var cardmonth: Int {
+    Int(month)
+  }
+  var cardyear: Int {
+    Int(year)
+  }
+  var cardcolor: Color {
+    if let data = color,
+       let uiColor = UIColor.color(data: data) {
+      return Color(uiColor)
+    } else {
+      return .blue
+    }
+  }
+}
 struct PersistenceController {
     static let shared = PersistenceController()
 

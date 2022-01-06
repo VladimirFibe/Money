@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F075611278541AB001969C7 /* AddTransactionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F075610278541AB001969C7 /* AddTransactionForm.swift */; };
+		1F07561B278586AC001969C7 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07561A278586AC001969C7 /* TransactionList.swift */; };
+		1F07561D27859190001969C7 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07561C27859190001969C7 /* TransactionView.swift */; };
 		1F406CA127843709005459F0 /* MoneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CA027843709005459F0 /* MoneyApp.swift */; };
 		1F406CA327843709005459F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CA227843709005459F0 /* ContentView.swift */; };
 		1F406CA527843709005459F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F406CA427843709005459F0 /* Assets.xcassets */; };
 		1F406CA827843709005459F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F406CA727843709005459F0 /* Preview Assets.xcassets */; };
 		1F406CAA27843709005459F0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CA927843709005459F0 /* Persistence.swift */; };
 		1F406CAD27843709005459F0 /* Money.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CAB27843709005459F0 /* Money.xcdatamodeld */; };
+		1F406CB5278439BF005459F0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CB4278439BF005459F0 /* MainView.swift */; };
+		1F406CB727846453005459F0 /* AddCardForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CB627846453005459F0 /* AddCardForm.swift */; };
+		1FD4E51127869BB6005AFF7C /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4E51027869BB6005AFF7C /* CategoriesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F075610278541AB001969C7 /* AddTransactionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionForm.swift; sourceTree = "<group>"; };
+		1F07561A278586AC001969C7 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
+		1F07561C27859190001969C7 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		1F406C9D27843709005459F0 /* Money.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Money.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F406CA027843709005459F0 /* MoneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyApp.swift; sourceTree = "<group>"; };
 		1F406CA227843709005459F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +32,9 @@
 		1F406CA727843709005459F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F406CA927843709005459F0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1F406CAC27843709005459F0 /* Money.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Money.xcdatamodel; sourceTree = "<group>"; };
+		1F406CB4278439BF005459F0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1F406CB627846453005459F0 /* AddCardForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardForm.swift; sourceTree = "<group>"; };
+		1FD4E51027869BB6005AFF7C /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +48,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F07560F2785419A001969C7 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				1F075610278541AB001969C7 /* AddTransactionForm.swift */,
+				1FD4E51027869BB6005AFF7C /* CategoriesList.swift */,
+				1F07561A278586AC001969C7 /* TransactionList.swift */,
+				1F07561C27859190001969C7 /* TransactionView.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
 		1F406C9427843709005459F0 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +78,7 @@
 		1F406C9F27843709005459F0 /* Money */ = {
 			isa = PBXGroup;
 			children = (
+				1F406CB3278439B4005459F0 /* Main */,
 				1F406CA027843709005459F0 /* MoneyApp.swift */,
 				1F406CA227843709005459F0 /* ContentView.swift */,
 				1F406CA427843709005459F0 /* Assets.xcassets */,
@@ -71,6 +95,24 @@
 				1F406CA727843709005459F0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1F406CB3278439B4005459F0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1F07560F2785419A001969C7 /* Transactions */,
+				1F406CB4278439BF005459F0 /* MainView.swift */,
+				1F406CB8278466F9005459F0 /* AddCard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		1F406CB8278466F9005459F0 /* AddCard */ = {
+			isa = PBXGroup;
+			children = (
+				1F406CB627846453005459F0 /* AddCardForm.swift */,
+			);
+			path = AddCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +186,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F406CAA27843709005459F0 /* Persistence.swift in Sources */,
+				1F406CB727846453005459F0 /* AddCardForm.swift in Sources */,
+				1F07561B278586AC001969C7 /* TransactionList.swift in Sources */,
 				1F406CA327843709005459F0 /* ContentView.swift in Sources */,
+				1F075611278541AB001969C7 /* AddTransactionForm.swift in Sources */,
+				1FD4E51127869BB6005AFF7C /* CategoriesList.swift in Sources */,
 				1F406CAD27843709005459F0 /* Money.xcdatamodeld in Sources */,
+				1F406CB5278439BF005459F0 /* MainView.swift in Sources */,
 				1F406CA127843709005459F0 /* MoneyApp.swift in Sources */,
+				1F07561D27859190001969C7 /* TransactionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +331,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,8 +361,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
