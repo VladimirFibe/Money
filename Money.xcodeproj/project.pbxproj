@@ -18,7 +18,9 @@
 		1F406CAD27843709005459F0 /* Money.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CAB27843709005459F0 /* Money.xcdatamodeld */; };
 		1F406CB5278439BF005459F0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CB4278439BF005459F0 /* MainView.swift */; };
 		1F406CB727846453005459F0 /* AddCardForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F406CB627846453005459F0 /* AddCardForm.swift */; };
+		1F570A2F2787C9EB00F75898 /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F570A2E2787C9EB00F75898 /* CreditCardView.swift */; };
 		1FD4E51127869BB6005AFF7C /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4E51027869BB6005AFF7C /* CategoriesList.swift */; };
+		1FD4E5172786F7A7005AFF7C /* FilterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4E5162786F7A7005AFF7C /* FilterSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +36,9 @@
 		1F406CAC27843709005459F0 /* Money.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Money.xcdatamodel; sourceTree = "<group>"; };
 		1F406CB4278439BF005459F0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1F406CB627846453005459F0 /* AddCardForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardForm.swift; sourceTree = "<group>"; };
+		1F570A2E2787C9EB00F75898 /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		1FD4E51027869BB6005AFF7C /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
+		1FD4E5162786F7A7005AFF7C /* FilterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 				1FD4E51027869BB6005AFF7C /* CategoriesList.swift */,
 				1F07561A278586AC001969C7 /* TransactionList.swift */,
 				1F07561C27859190001969C7 /* TransactionView.swift */,
+				1FD4E5162786F7A7005AFF7C /* FilterSheet.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				1F406CB627846453005459F0 /* AddCardForm.swift */,
+				1F570A2E2787C9EB00F75898 /* CreditCardView.swift */,
 			);
 			path = AddCard;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 				1F406CB5278439BF005459F0 /* MainView.swift in Sources */,
 				1F406CA127843709005459F0 /* MoneyApp.swift in Sources */,
 				1F07561D27859190001969C7 /* TransactionView.swift in Sources */,
+				1FD4E5172786F7A7005AFF7C /* FilterSheet.swift in Sources */,
+				1F570A2F2787C9EB00F75898 /* CreditCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

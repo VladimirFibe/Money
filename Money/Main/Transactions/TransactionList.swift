@@ -18,31 +18,64 @@ struct TransactionList: View {
   }
   @Environment(\.managedObjectContext) private var viewContext
   @State private var shouldShowAddTransactionForm = false
+  @State private var shouldShowFilterSheet = false
+  @State private var selectedCategories = Set<TransactionCategory>()
   var fetchRequest: FetchRequest<CardTransaction>
-  
-  var body: some View {
-    VStack {
-      Text("Get started bu adding your first transaction")
-      
-      addTransaction
-      
-      ForEach(fetchRequest.wrappedValue) { transaction in
-        TransactionView(transaction: transaction)
+  var filteredTransaction: [CardTransaction] {
+    if selectedCategories.isEmpty {
+      return Array(fetchRequest.wrappedValue)
+    } else {
+      return fetchRequest.wrappedValue.filter { transaction in
+        var shouldKeep = false
+        if let categories = transaction.categories as? Set<TransactionCategory> {
+          categories.forEach { if selectedCategories.contains($0) { shouldKeep = true}}
+        }
+        return shouldKeep
       }
     }
   }
-  var addTransaction: some View {
+  var body: some View {
+    VStack {
+      if fetchRequest.wrappedValue.isEmpty {
+        Text("Get started by adding your first transaction")
+        addTransaction
+      } else {
+        HStack {
+          Spacer()
+          addTransaction
+          filterButton
+        }
+        .padding(.trailing)
+        ForEach(filteredTransaction) { transaction in
+          TransactionView(transaction: transaction)
+        }
+        .foregroundColor(.black)
+      }
+    }
+    .font(.headline)
+    .foregroundColor(Color(.systemBackground))
+    .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
+      AddTransactionForm(card: card)
+    }
+    .sheet(isPresented: $shouldShowFilterSheet) {
+      FilterSheet(selectedCategories: $selectedCategories)
+    }
+  }
+  private var filterButton: some View {
+    Button {
+      shouldShowFilterSheet.toggle()
+    } label: {
+      Label("Filter", systemImage: "line.horizontal.3.decrease.circle")
+    }
+    .buttonStyle(.borderedProminent)
+  }
+  private var addTransaction: some View {
     Button {
       shouldShowAddTransactionForm.toggle()
     } label: {
       Text("+ Transaction")
-        .font(.headline)
-        .foregroundColor(Color(.systemBackground))
     }
     .buttonStyle(.borderedProminent)
-    .fullScreenCover(isPresented: $shouldShowAddTransactionForm) {
-      AddTransactionForm(card: card)
-    }
   }
 }
 

@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct MoneyApp: App {
-    let persistenceController = PersistenceController.shared
-
-    var body: some Scene {
-        WindowGroup {
-            MainView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
+  let persistenceController = PersistenceController.shared
+  
+  var body: some Scene {
+    WindowGroup {
+      MainView()
+        .environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
+  }
+}
+extension Color {
+  static let cardTransactionBackground = Color("cardTransactionBackground")
 }

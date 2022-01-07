@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoriesList: View {
   @State private var name = ""
   @State private var color = Color.red
-  
+  @Binding var selectedCategories: Set<TransactionCategory>
   @Environment(\.managedObjectContext) private var viewContext
   @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \TransactionCategory.timestamp, ascending: false)],
@@ -21,21 +21,26 @@ struct CategoriesList: View {
       if !categories.isEmpty {
         Section(header: Text("Select a category")) {
           ForEach(categories) { category in
-            HStack(spacing: 12.0) {
-              if let data = category.colorData,
-                 let uiColor = UIColor.color(data: data) {
-                let color = Color(uiColor)
-                Spacer()
-                  .frame(width: 30, height: 10)
-                  .background(color)
+            Button(action: {
+              if selectedCategories.contains(category) {
+                selectedCategories.remove(category)
+              } else {
+                selectedCategories.insert(category)
               }
-              Text(category.name ?? "")
-              Spacer()
+            }) {
+              HStack {
+                CategoryRow(category: category)
+                if selectedCategories.contains(category) {
+                  Image(systemName: "checkmark")
+                }
+              }
             }
           }
           .onDelete { indexSet in
             indexSet.forEach { index in
-              viewContext.delete(categories[index])
+              let category = categories[index]
+              viewContext.delete(category)
+              selectedCategories.remove(category)
             }
             try? viewContext.save()
           }
@@ -64,11 +69,27 @@ struct CategoriesList: View {
     name = ""
   }
 }
-
+struct CategoryRow: View {
+  var category: TransactionCategory
+  var body: some View {
+    HStack(spacing: 12.0) {
+      if let data = category.colorData,
+         let uiColor = UIColor.color(data: data) {
+        let color = Color(uiColor)
+        Spacer()
+          .frame(width: 30, height: 10)
+          .background(color)
+      }
+      Text(category.name ?? "")
+        .foregroundColor(Color(.label))
+      Spacer()
+    }
+  }
+}
 struct CategoriesList_Previews: PreviewProvider {
   static var previews: some View {
     NavigationView {
-      CategoriesList()
+      CategoriesList(selectedCategories: .constant(.init()))
     }
     .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
   }

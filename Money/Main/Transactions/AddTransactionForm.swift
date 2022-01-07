@@ -10,12 +10,27 @@ import CoreData
 import UIKit
 struct AddTransactionForm: View {
   let card: Card
+  init(card: Card) {
+    self.card = card
+    let context = PersistenceController.shared.container.viewContext
+    let request = TransactionCategory.fetchRequest()
+    request.sortDescriptors = [.init(key: "timestamp", ascending: false)]
+    do {
+      let result = try context.fetch(request)
+      if let first = result.first {
+        _selectedCategories = .init(initialValue: [first])
+      }
+    } catch {
+      print("DEBUG: Failed to preselected categories: \(error.localizedDescription)")
+    }
+  }
   @Environment(\.dismiss) var dismiss
   @State private var name = ""
   @State private var amount = ""
   @State private var date = Date()
   @State private var photoData: Data?
   @State private var shouldPresentPhotoPicker = false
+  @State private var selectedCategories = Set<TransactionCategory>()
   var body: some View {
     NavigationView {
       Form {
@@ -25,8 +40,12 @@ struct AddTransactionForm: View {
           DatePicker("Date", selection: $date, displayedComponents: .date)
         }
         Section(header: Text("Categories")) {
-          NavigationLink(destination: CategoriesList()) {
+          NavigationLink(destination: CategoriesList(selectedCategories: $selectedCategories)) {
             Text("Select categories")
+          }
+          let sortedByTimestampCategories = Array(selectedCategories).sorted(by: {$0.timestamp?.compare($1.timestamp ?? Date()) == .orderedDescending})
+          ForEach(sortedByTimestampCategories) { category in
+            CategoryRow(category: category)
           }
         }
         Section(header: Text("Photo/Receipt")) {
@@ -63,6 +82,7 @@ struct AddTransactionForm: View {
       transaction.timestamp = date
       transaction.photoData = photoData
       transaction.card = card
+      transaction.categories = self.selectedCategories as NSSet
       do {
         try context.save()
         dismiss()

@@ -19,12 +19,36 @@ struct TransactionView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 20.0) {
       header
+      categoriesLine
       photo
     }
+    .foregroundColor(Color(.label))
     .padding()
-    .background(Color.white)
+    .background(Color.cardTransactionBackground)
+    .cornerRadius(5)
     .shadow(radius: 5)
     .padding(.horizontal)
+  }
+  private var categoriesLine: some View {
+    HStack {
+      if let categories = transaction.categories as? Set<TransactionCategory> {
+        let sortedByTimestampCategories = Array(categories).sorted(by: {$0.timestamp?.compare($1.timestamp ?? Date()) == .orderedDescending})
+        ForEach(sortedByTimestampCategories, id: \.self) { category in
+          if let data = category.colorData,
+             let uiColor = UIColor.color(data: data) {
+            let color = Color(uiColor)
+            Text(category.name ?? "")
+              .font(.system(size: 16, weight: .semibold))
+              .padding(.vertical, 6)
+              .padding(.horizontal, 8)
+              .background(color)
+              .foregroundColor(.white)
+              .cornerRadius(5)
+          }
+        }
+      }
+      Spacer()
+    }
   }
   private var photo: some View {
     VStack {
